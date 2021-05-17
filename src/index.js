@@ -10,15 +10,17 @@ const transform = pipe(trim, toLowerCase, wrap("div"));
 console.log(transform(input));
 
 // Immutable.js
+import { produce } from "immer";
 
-import { Map } from "immutable";
-
-let book = Map({ title: "Harry Potter" });
+let book = { title: "Harry Potter" };
 
 function publish(book) {
-  return book.set("isPublished", true);
+  return produce(book, (draftBook) => {
+    draftBook.isPublished = true;
+  });
 }
 
-book = publish(book);
+let updated = publish(book);
 
-console.log(book.toJS());
+console.log(book);
+console.log(updated);
