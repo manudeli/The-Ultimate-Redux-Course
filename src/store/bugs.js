@@ -26,7 +26,7 @@ const slice = createSlice({
     },
 
     bugAssignedToUser: (bugs, action) => {
-      const { bugId, userId } = action.payload;
+      const { id: bugId, userId } = action.payload;
       const index = bugs.list.findIndex((bug) => bug.id === bugId);
       bugs.list[index].userId = userId;
     },
@@ -97,6 +97,14 @@ export const resolveBug = (id) =>
     method: "patch", // So use PATCH for updating only one property, resolved
     data: { resolved: true },
     onSuccess: bugResolved.type,
+  });
+
+export const assignBugToUser = (bugId, userId) =>
+  apiCallBegan({
+    url: url + "/" + bugId,
+    method: "patch",
+    data: { userId },
+    onSuccess: bugAssignedToUser.type,
   });
 
 // Memoization
