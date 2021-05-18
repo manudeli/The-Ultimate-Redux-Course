@@ -45,6 +45,8 @@ const slice = createSlice({
   },
 });
 
+// Software Design:: ✨ Cohesion ✨ :: Making software as separate modules is not Silver bullet
+// Below code has to be packaged together within the same module.
 const {
   bugAdded, // addBug
   bugResolved,
