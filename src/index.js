@@ -1,11 +1,10 @@
 import configureStore from "./store/configureStore";
-import * as actions from "./store/api";
+import { loadBugs } from "./store/bugs";
 
 const store = configureStore();
+// UI Layer
+store.dispatch(loadBugs());
 
-store.dispatch(
-  actions.apiCallBegan({
-    url: "/bugs",
-    onSuccess: "bugsReceived",
-  })
-);
+setTimeout(() => {
+  store.dispatch(loadBugs());
+}, 2000);
