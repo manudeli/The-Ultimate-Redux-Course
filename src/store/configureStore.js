@@ -3,5 +3,8 @@ import reducer from "./reducer";
 import logger from "./middleware/logger";
 
 export default function () {
-  return configureStore({ reducer, middleware: [logger] });
+  return configureStore({
+    reducer,
+    middleware: [logger({ destination: "console" })],
+  });
 }
