@@ -31,10 +31,13 @@ const slice = createSlice({
       bugs.list[index].userId = userId;
     },
 
+    // command - event
+    // addBug - bugAdded
     bugAdded: (bugs, action) => {
       bugs.list.push(action.payload);
     },
 
+    // resolveBug (command) - bugResolved (event)
     bugResolved: (bugs, action) => {
       const index = bugs.list.findIndex((bug) => bug.id === action.payload.id);
       bugs.list[index].resolved = true;
@@ -83,6 +86,17 @@ export const addBug = (bug) =>
     method: "post",
     data: bug,
     onSuccess: bugAdded.type,
+  });
+
+export const resolveBug = (id) =>
+  apiCallBegan({
+    // There is 2 ways of update Data (PUT, PATCH)
+    // 1. PUT:: Update the entire resource press.
+    // 2. PATCH:: Update one or more properties.
+    url: url + "/" + id,
+    method: "patch", // So use PATCH for updating only one property, resolved
+    data: { resolved: true },
+    onSuccess: bugResolved.type,
   });
 
 // Memoization
