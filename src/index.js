@@ -1,3 +1,2 @@
-import { turnOn } from "./store/module";
-
-turnOn();
+import {} from "./store/bugs";
+// Ctrl + SpaceBar
