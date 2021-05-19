@@ -1,6 +1,6 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { addBug } from "../bugs";
+import { addBug, getUnresolvedBugs } from "../bugs";
 import configureStore from "../configureStore";
 
 describe("bugsSlice", () => {
@@ -13,6 +13,14 @@ describe("bugsSlice", () => {
   });
 
   const bugsSlice = () => store.getState().entities.bugs;
+
+  const createState = () => ({
+    entities: {
+      bugs: {
+        lists: [],
+      },
+    },
+  });
 
   it("should add the bug to the store if it's saved to the server", async () => {
     // Three part of Tip for writing Clean code to unit test
@@ -36,5 +44,23 @@ describe("bugsSlice", () => {
     await store.dispatch(addBug(bug));
 
     expect(bugsSlice().list).toHaveLength(0);
+  });
+
+  describe("selectors", () => {
+    it("getUnresolvedBugs", () => {
+      // 1. Arrange
+      const state = createState();
+      state.entities.bugs.list = [
+        { id: 1, resolved: true },
+        { id: 2 },
+        { id: 3 },
+      ];
+
+      //  2. Act
+      const result = getUnresolvedBugs(state);
+
+      // 3. Assert
+      expect(result).toHaveLength(2);
+    });
   });
 });
