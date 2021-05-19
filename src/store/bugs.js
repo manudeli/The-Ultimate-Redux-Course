@@ -73,7 +73,7 @@ export const loadBugs = () => (dispatch, getState) => {
       }분 후 다시 요청하세요`
     );
 
-  dispatch(
+  return dispatch(
     apiCallBegan({
       url,
       onStart: bugsRequested.type,

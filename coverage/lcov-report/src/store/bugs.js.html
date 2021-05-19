@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.72% </span>
+                <span class="strong">76.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/39</span>
+                <span class='fraction'>30/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>14/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">79.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/34</span>
+                <span class='fraction'>27/34</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -197,17 +197,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,18 +246,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -321,18 +321,18 @@ const slice = createSlice({
     lastFetch: null,
   },
   reducers: {
-    bugsRequested: <span class="fstat-no" title="function not covered" >(b</span>ugs, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >      bugs.loading = true;</span>
+    bugsRequested: (bugs, action) =&gt; {
+      bugs.loading = true;
     },
 &nbsp;
-    bugsReceived: <span class="fstat-no" title="function not covered" >(b</span>ugs, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >      bugs.list = action.payload;</span>
-<span class="cstat-no" title="statement not covered" >      bugs.loading = false;</span>
-<span class="cstat-no" title="statement not covered" >      bugs.lastFetch = Date.now();</span>
+    bugsReceived: (bugs, action) =&gt; {
+      bugs.list = action.payload;
+      bugs.loading = false;
+      bugs.lastFetch = Date.now();
     },
 &nbsp;
-    bugsRequestFailed: <span class="fstat-no" title="function not covered" >(b</span>ugs, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >      bugs.loading = false;</span>
+    bugsRequestFailed: (bugs, action) =&gt; {
+      bugs.loading = false;
     },
 &nbsp;
     bugAssignedToUser: <span class="fstat-no" title="function not covered" >(b</span>ugs, action) =&gt; {
@@ -371,18 +371,18 @@ export default slice.reducer;
 const url = "/bugs";
 &nbsp;
 // () =&gt; fn(dispatch, getState)
-export const loadBugs = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ispatch, getState) =&gt; {</span>
-  const { lastFetch } = <span class="cstat-no" title="statement not covered" >getState().entities.bugs;</span>
+export const loadBugs = () =&gt; (dispatch, getState) =&gt; {
+  const { lastFetch } = getState().entities.bugs;
 &nbsp;
-  const diffInMinutes = <span class="cstat-no" title="statement not covered" >moment().diff(moment(lastFetch), "minutes");</span>
-<span class="cstat-no" title="statement not covered" >  if (diffInMinutes &lt; 10)</span>
-<span class="cstat-no" title="statement not covered" >    return console.log(</span>
+  const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
+  if (diffInMinutes &lt; 10)
+    return console.log(
       `정보를 받아온 지 ${diffInMinutes}분 밖에 되지 않았습니다. ${
         10 - diffInMinutes
       }분 후 다시 요청하세요`
     );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  dispatch(</span>
+  return dispatch(
     apiCallBegan({
       url,
       onStart: bugsRequested.type,
@@ -439,7 +439,7 @@ export const getBugsByUser = <span class="fstat-no" title="function not covered"
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed May 19 2021 17:18:03 GMT+0900 (대한민국 표준시)
+                at Wed May 19 2021 17:47:31 GMT+0900 (대한민국 표준시)
             </div>
         </div>
         <script src="../../prettify.js"></script>
