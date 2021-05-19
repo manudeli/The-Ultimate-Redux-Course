@@ -83,24 +83,13 @@ export const loadBugs = () => (dispatch, getState) => {
   );
 };
 
-// make an api call
-// promise resolved => dispatch(success)
-export const addBug = (bug) => {
-  try {
-    const response = await axios.post(url, bug);
-    dispatch(bugAdded(bug));
-  } catch (error) {
-    dispatch({ type: "error" });
-  }
-};
-
-// export const addBug = (bug) =>
-//   apiCallBegan({
-//     url,
-//     method: "post",
-//     data: bug,
-//     onSuccess: bugAdded.type,
-//   });
+export const addBug = (bug) =>
+  apiCallBegan({
+    url,
+    method: "post",
+    data: bug,
+    onSuccess: bugAdded.type,
+  });
 
 export const resolveBug = (id) =>
   apiCallBegan({
