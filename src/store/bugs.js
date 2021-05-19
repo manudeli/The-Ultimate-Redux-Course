@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import axios from "axios";
 import { apiCallBegan } from "./api";
 import moment from "moment";
 
@@ -47,7 +48,7 @@ const slice = createSlice({
 
 // Software Design:: ✨ Cohesion ✨ :: Making software as separate modules is not Silver bullet
 // Below code has to be packaged together within the same module.
-const {
+export const {
   bugAdded, // addBug
   bugResolved,
   bugAssignedToUser,
@@ -82,13 +83,24 @@ export const loadBugs = () => (dispatch, getState) => {
   );
 };
 
-export const addBug = (bug) =>
-  apiCallBegan({
-    url,
-    method: "post",
-    data: bug,
-    onSuccess: bugAdded.type,
-  });
+// make an api call
+// promise resolved => dispatch(success)
+export const addBug = (bug) => {
+  try {
+    const response = await axios.post(url, bug);
+    dispatch(bugAdded(bug));
+  } catch (error) {
+    dispatch({ type: "error" });
+  }
+};
+
+// export const addBug = (bug) =>
+//   apiCallBegan({
+//     url,
+//     method: "post",
+//     data: bug,
+//     onSuccess: bugAdded.type,
+//   });
 
 export const resolveBug = (id) =>
   apiCallBegan({
